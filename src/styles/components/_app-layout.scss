@@ -1,0 +1,71 @@
+.main {
+  display: flex;
+  position: relative;
+}
+
+.side-bar {
+  background-color: #fff;
+  height: 100vh;
+  flex: 1;
+}
+
+.logo-area {
+  padding: 10px;
+  background-color: rgb(196, 216, 216);
+  display: flex;
+}
+.brand-name {
+  padding: 2px;
+  margin-left: 14px;
+  font-size: 20px;
+  letter-spacing: 8px;
+}
+
+.brand-logo {
+  font-size: 30px !important;
+  color: #03081a;
+}
+
+.create-records {
+  /* margin-left: auto; */
+  padding: 15px 0px;
+  text-align: center;
+}
+
+.content-area {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+}
+
+.content {
+  padding: 15px;
+}
+
+.main-content {
+  flex: 4;
+  overflow: auto;
+  background-color: #f3f6f9;
+}
+
+.date-wrapper {
+  font-size: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+  color: $default-font-color;
+}
+
+@media (max-width: 450px) {
+  .side-bar {
+    width: 0px;
+    overflow: hidden;
+  }
+  .sm-side-bar {
+    width: 100vw !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

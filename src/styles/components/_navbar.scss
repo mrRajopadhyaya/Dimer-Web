@@ -1,0 +1,22 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5.3px;
+  background-color: #fff;
+  .profile-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 10px;
+    margin: 3px 10px;
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+    .simple-menu {
+      position: absolute;
+    }
+  }
+}

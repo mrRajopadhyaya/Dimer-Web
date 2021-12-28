@@ -1,0 +1,82 @@
+.amount-card {
+  width: 460px;
+}
+.data-overview {
+  display: flex;
+  justify-content: space-between;
+}
+.amount-total {
+  margin-top: 14px;
+}
+.amount-total-value {
+  font-size: 29px;
+}
+.amount-expense-value {
+  font-size: 25px;
+}
+.amount-expense {
+  margin-top: 12px;
+}
+.amount-income-value {
+  font-size: 25px;
+}
+.amount-income {
+  margin-top: 12px;
+}
+.amount-total-label {
+  font-size: 20px;
+  margin: 8px 0px;
+}
+
+.amount-expense-label {
+  font-size: 18px;
+  margin: 8px 0px;
+}
+.amount-income-label {
+  font-size: 18px;
+  margin: 8px 0px;
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: #c4d8d8;
+  padding: 8px 0px;
+}
+
+.add-form-label {
+  padding: 10px 0px !important;
+  justify-content: space-between;
+  align-items: center;
+  color: $default-font-color;
+}
+
+.title-icon {
+  padding: 0px;
+  margin: 4px 7px;
+}
+
+.amount-card {
+  padding: 20px;
+}
+
+.amount-card .title {
+  margin-bottom: 10px;
+}
+
+.amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pie-chart {
+  width: 500px;
+}
+
+.sidebar-menu a {
+  color: $default-font-color;
+}
+
+.svg-ic {
+  color: $default-font-color;
+}
