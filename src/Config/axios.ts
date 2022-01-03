@@ -18,7 +18,6 @@ axios.interceptors.request.use(
   function (config) {
     const user = firebaseInstance.auth().currentUser;
     const idToken = user?.getIdToken();
-    console.log(idToken, "@@getIdToken")
     // * Do something before request is sent
     return config;
   },
