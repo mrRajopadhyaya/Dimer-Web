@@ -19,7 +19,6 @@ export const UserReducer = (
 ) => {
   switch (action?.type) {
     case UPDATE_PROFILE:
-      console.log('dispatch chalyo');
       return {
         ...state,
         profile: { ...action.payload },

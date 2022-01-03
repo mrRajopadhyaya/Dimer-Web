@@ -2,45 +2,36 @@ import Chart from "react-apexcharts";
 import { useEffect, useState } from "react";
 import { APIGetExpenseByDate } from "../../API/analytics";
 import moment from "moment";
-
-const chartOptions = {
-  xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-  },
-};
-
-const state = {
-  series: [
-    {
-      data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-    },
-  ],
-};
+import { useDispatch, useSelector } from "react-redux";
+import { getExpenseByDate } from "../../Store/Analytics/action";
 
 const ExpenseLineChart = () => {
   const [series, setSeries] = useState([{ data: [] }]);
+  const dispatch = useDispatch();
   const [chartOption, setChartOption] = useState({ xaxis: { categories: [] } });
+  const expenseByDate = useSelector(
+    (state: any) => state.analytics.expenseByDate
+  );
   useEffect(() => {
-    (async () => {
-      const [dateResponse, dateError] = await APIGetExpenseByDate();
-      const seriesData: any = dateResponse?.expense?.map(
-        (data: any) => data.amount
-      );
-      const categoriesData = dateResponse?.expense?.map((data: any) =>
-        moment(data._id).format("MMM DD")
-      );
-      setChartOption((prevState) => {
-        return {
-          ...prevState,
-          xaxis: {
-            ...prevState.xaxis,
-            categories: categoriesData,
-          },
-        };
-      });
-      setSeries([{ data: seriesData }]);
-    })();
+    dispatch(getExpenseByDate());
   }, []);
+
+  useEffect(() => {
+    const seriesData: any = expenseByDate?.map((data: any) => data.amount);
+    const categoriesData = expenseByDate?.map((data: any) =>
+      moment(data._id).format("MMM DD")
+    );
+    setChartOption((prevState) => {
+      return {
+        ...prevState,
+        xaxis: {
+          ...prevState.xaxis,
+          categories: categoriesData,
+        },
+      };
+    });
+    setSeries([{ data: seriesData }]);
+  }, [expenseByDate]);
   return (
     <div>
       <Chart options={chartOption} series={series} type="line" height={350} />

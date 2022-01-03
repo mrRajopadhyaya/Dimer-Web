@@ -3,7 +3,6 @@ import { CREATE_TRANSACTION, LOAD_TRANSACTION,DELETE_TRANSACTION } from "./const
 
 
 export const addTransaction = (transaction: Transaction) => {
-  console.log(transaction,"@transaction");
   return {
     type: CREATE_TRANSACTION,
     payload: transaction,

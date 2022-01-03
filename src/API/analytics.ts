@@ -1,5 +1,5 @@
 import axios from "../Config/axios";
-import {Alert} from '../Utils/Alert';
+import {Alert} from '../Utils/Alert';  
 // import { Transaction } from "../Interface/TransactionState";
 // import { ThunkAction, ThunkDispatch } from "redux-thunk";
 // import { AnyAction } from "redux";
@@ -11,7 +11,6 @@ const BASE_PATH = "/analytics";
 export const APIGetExpenseByCategory = async () => {
   try {
     const data = await axios.get(`${BASE_PATH}/by-category`);
-    console.log(data, "@expense by category");
     return [data.data, null];
   } catch (error) {
     return [null, error];
@@ -22,7 +21,6 @@ export const APIGetExpenseByCategory = async () => {
 export const APIGetExpenseByDate = async () => {
   try {
     const data = await axios.get(`${BASE_PATH}/by-date`);
-    console.log(data, "@expense by category");
     return [data.data, null];
   } catch (error) {
     return [null, error];
