@@ -4,6 +4,7 @@
 .data-overview {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .amount-total {
   margin-top: 14px;
@@ -79,4 +80,25 @@
 
 .svg-ic {
   color: $default-font-color;
+}
+
+@media screen and (max-width: 1238px) {
+  .amount-card {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1163px) {
+  .amount-card {
+    width: 350px;
+  }
+  .pie-chart {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 1022px) {
+  .pie-chart {
+    width: 300px;
+  }
 }
