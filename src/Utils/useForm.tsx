@@ -6,7 +6,7 @@ function useForm(initialState: any, validate: any, initiateSubmit: any) {
   const [isSubmitting, setSubmitting] = React.useState(false);
 
   const resetFormValue = (initialState: any) => {
-    setValues(initialState);
+    setValues({ ...initialState });
   };
 
   const manualSetValue = async (name: any, value: any) => {

@@ -3,6 +3,7 @@ import AppRouter from "./AppRouter";
 import SideBar from "../Common/SideBar";
 import ModalAddRecord from "../../Components/Common/ModalAddRecord";
 import NavBar from "../Common/NavBar";
+import BottomNavBar from "../Common/BottomNavBar";
 
 const AppLayout = () => {
   const [showAddRecord, setShowAddRecord] = useState(false);
@@ -20,6 +21,7 @@ const AppLayout = () => {
           <AppRouter />
         </div>
       </div>
+      <BottomNavBar toggleRecordModal={setShowAddRecord} />
 
       <ModalAddRecord
         showRecordModal={showAddRecord}

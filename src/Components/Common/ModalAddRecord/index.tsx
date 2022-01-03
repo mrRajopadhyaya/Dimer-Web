@@ -25,11 +25,15 @@ import {
 } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import { CATEGORIES, RECORD_TYPE } from "../../../Utils/constants/categories";
-import { createTransaction } from "../../../API/transaction";
+import { createTransaction, getTotalData } from "../../../API/transaction";
 import { useDispatch } from "react-redux";
 import useForm from "../../../Utils/useForm";
 import { validateAddRecord } from "./validateAddRecord";
 import { Alert } from "../../../Utils/Alert";
+import {
+  getExpenseByCategory,
+  getExpenseByDate,
+} from "../../../Store/Analytics/action";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,7 +57,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(1),
     },
     marginX: {
-      // marginTop: 20,
       marginBottom: 20,
     },
     marginRight: {
@@ -98,7 +101,15 @@ export default function ModalAddRecord(props: any) {
       amount: values.recordAmount,
     };
     await dispatch(createTransaction(params));
+    resetFormValue(INITIAL_FORM_VALUES);
+    updateDashboard();
     Alert("success", "Transaction added successfully");
+  };
+
+  const updateDashboard = () => {
+    dispatch(getExpenseByDate());
+    dispatch(getTotalData());
+    dispatch(getExpenseByCategory());
   };
 
   const {
@@ -210,7 +221,7 @@ export default function ModalAddRecord(props: any) {
             variant="outlined"
             size="medium"
             color="primary"
-            onClick={resetFormValue}
+            onClick={() => resetFormValue(INITIAL_FORM_VALUES)}
           >
             Reset
           </Button>

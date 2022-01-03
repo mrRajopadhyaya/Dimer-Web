@@ -3,17 +3,16 @@ import AmountCard from "../../Components/AmountCard";
 import DateCard from "../../Components/DateCard";
 import { getTotalData } from "../../API/transaction";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  APIGetExpenseByCategory,
-  APIGetExpenseByDate,
-} from "../../API/analytics";
 import Chart from "react-apexcharts";
 import ExpenseLineChart from "../../Components/ExpenseLineChart";
-import { Alert } from "../../Utils/Alert";
+import { getExpenseByCategory } from "../../Store/Analytics/action";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const totalData = useSelector((state) => state.analytics.totalData);
+  const expenseByCategory = useSelector(
+    (state) => state.analytics.expenseByCategory
+  );
   const [chartOption, setChartOption] = useState({
     chart: {
       width: 200,
@@ -22,23 +21,21 @@ const Dashboard = () => {
     labels: [],
   });
   const [chartSeries, setChartSeries] = useState([]);
+
   useEffect(() => {
     dispatch(getTotalData());
-    (async () => {
-      const [response, error] = await APIGetExpenseByCategory();
-      if (error) {
-        Alert();
-        return;
-      }
-      setChartOption((prevState) => {
-        return {
-          ...prevState,
-          labels: response.label,
-        };
-      });
-      setChartSeries(response.value);
-    })();
+    dispatch(getExpenseByCategory());
   }, []);
+
+  useEffect(() => {
+    setChartOption((prevState) => {
+      return {
+        ...prevState,
+        labels: expenseByCategory.label,
+      };
+    });
+    setChartSeries(expenseByCategory.value);
+  }, [expenseByCategory]);
   return (
     <div className="dashboard">
       <DateCard />

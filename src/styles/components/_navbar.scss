@@ -3,6 +3,9 @@
   justify-content: space-between;
   padding: 5.3px;
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
   .profile-image {
     width: 32px;
     height: 32px;

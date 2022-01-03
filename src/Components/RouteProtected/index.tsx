@@ -9,7 +9,6 @@ export const RouteProtected = ({ component: Component, ...rest }: any) => {
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       const idToken = await user?.getIdToken();
-      console.log(idToken, "@user");
       axios.defaults.headers.common.Authorization = idToken ?? "";
       idToken?.length ? setIsAuthenticated(true) : setIsAuthenticated(false);
       await getProfile();
