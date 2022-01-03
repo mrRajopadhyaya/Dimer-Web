@@ -33,7 +33,7 @@ const ExpenseLineChart = () => {
     setSeries([{ data: seriesData }]);
   }, [expenseByDate]);
   return (
-    <div>
+    <div className="mr-top-sm mr-bottom-lg">
       <Chart options={chartOption} series={series} type="line" height={350} />
     </div>
   );

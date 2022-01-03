@@ -69,3 +69,20 @@
     left: 0;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .side-bar {
+    display: none;
+  }
+
+  .data-overview {
+    flex-wrap: wrap;
+  }
+
+  .bottom-app-bar {
+    display: block !important;
+  }
+  .hamburger-menu {
+    visibility: hidden;
+  }
+}
